@@ -1,0 +1,5 @@
+@import '../mixins/media';
+
+img:not(.image), video:not(.video), iframe:not(.video) {
+  @include media-object-fit;
+}

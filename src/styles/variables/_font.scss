@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+@import '../mixins/font';
+
+/* root */
+$root-folder: '../../assets/';
+
+// Font variables
+$title-font: 'Lora' !default;
+$body-font: 'Poppins' !default;
+
+/* Lora */
+@include import-fonts($root-folder, 'Lora', [700, 400]);
+
+/* Poppins */
+@include import-fonts($root-folder, 'Poppins', [900, 800, 700, 600, 500, 400, 300, 200, 100]);

@@ -1,0 +1,86 @@
+@import '../variables/font';
+@import '../variables/color';
+@import '../mixins/utils';
+@import '../mixins/media';
+
+/* Convert 1rem = 10px */
+:root {
+  font-size: 62.5%; /* 0.8x default size */
+}
+
+body {
+  /* background-color: $white;
+  background-image: url('/media/image/background/pattern-03.png');
+  background-position: center center;
+  background-repeat: repeat;
+  background-size: 12rem; */
+  /* @include background('30', $white); */
+
+  &,
+  a,
+  b,
+  strong,
+  i,
+  em,
+  input,
+  label,
+  button,
+  textarea,
+  span,
+  p,
+  div,
+  pre {
+    /* Điều kì diệu khiến font chữ trên Mac và Windows style nhìn giống nhau */
+    -webkit-font-smoothing: antialiased;
+    //font-feature-settings: "liga" off;
+    //font-variant-ligatures: none;
+
+    color: $brown-1;
+    font-family: $body-font;
+
+    /* Disable Standard Ligatures */
+    font-feature-settings: 'liga' 0;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+  }
+
+  /* Fix lỗi iframe bị lệch trên Safari */
+  iframe {
+    overflow: hidden;
+    object-fit: contain !important;
+    object-position: 50% 50%;
+  }
+
+  /* Prevent background color leak outs */
+  img,
+  button,
+  div {
+    @include background-bleed();
+  }
+
+  input,
+  textarea {
+    &::placeholder {
+      color: $blue-3;
+    }
+  }
+
+  button {
+    span {
+      line-height: normal;
+    }
+  }
+
+  a {
+    &,
+    &:focus,
+    &:visited,
+    &:hover {
+      cursor: pointer;
+      color: inherit;
+    }
+  }
+}

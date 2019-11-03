@@ -1,0 +1,13 @@
+@import '../variables/color';
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.error-message {
+  &, span {
+    color: $red-1;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+}

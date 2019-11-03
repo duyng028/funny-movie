@@ -1,0 +1,11 @@
+@mixin orient-to($oreintation) {
+  @if $oreintation == portrait {
+    @media screen and (orientation:portrait) {
+    	@content;
+    }
+  } @else {
+    @media screen and (orientation:landscape) {
+    	@content;
+    }
+  }
+}

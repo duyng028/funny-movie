@@ -1,0 +1,46 @@
+@import './utils';
+@import './compatibility';
+
+@mixin word-wrap($max-size: 100%) {
+  @include word-break(break-word);
+  @include hyphens(auto);
+
+  /* Fix for Firefox */
+  word-wrap: break-word;
+  display: inline-block;
+  max-width: $max-size;
+  overflow: hidden;
+  @include text-overflow(ellipsis);
+}
+
+/* Ẩn con trỏ soạn thảo */
+@mixin caret-hidden($color) {
+  color: transparent;
+  text-shadow: 0 0 0 $color;
+}
+
+/* Cắt chữ theo dòng (Chrome & Safari only) */
+@mixin split-text($row-number) {
+  @include fit-content();
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row-number;
+  display: -webkit-box;
+
+  overflow: hidden;
+}
+
+@mixin limit-paragraph-height($height) {
+  max-height: $height;
+  overflow: hidden;
+}
+
+@mixin limit-paragraph-width($width) {
+  display: inline-block;
+
+  max-width: $width;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

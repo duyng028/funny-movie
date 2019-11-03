@@ -1,0 +1,19 @@
+@import '../variables/color';
+@import '../mixins/text';
+
+/* Fake placeholder cho những tag không hỗ trợ thuộc tính placeholder */
+.placeholder {
+  @include word-wrap();
+
+  &,
+  &:focus {
+    outline: none;
+  }
+
+  &[placeholder]:empty {
+    &:before {
+      color: $blue-3;
+      content: attr(placeholder);
+    }
+  }
+}

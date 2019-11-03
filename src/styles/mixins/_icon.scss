@@ -1,0 +1,38 @@
+$baseurl: '../../assets/';
+
+/* Modify icon size */
+@mixin icon-size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* Import 1 icon, phải set width & height mới hiển thị */
+@mixin icon($icon-folder, $icon-name) {
+  display: inline-block;
+  cursor: pointer;
+
+  /* Fix lỗi có thêm border/padding thì icon size bị hao hụt */
+  box-sizing: content-box;
+
+  background: url($baseurl+'media/icon/#{$icon-folder + $icon-name}-icon.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /* Set width & height */
+}
+
+/* Import hàng loạt icon */
+@mixin import-icons($icon-folder, $icons, $width: 2.4rem, $height: $width) {
+  @each $icon-name in $icons {
+    i {
+      &.#{$icon-name + '-icon'} {
+        @include icon($icon-folder, $icon-name);
+        @include icon-size($width, $height);
+
+        /* Add more specific style */
+        @content;
+      }
+    }
+  }
+}

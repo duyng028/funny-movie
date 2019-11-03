@@ -1,0 +1,25 @@
+.e-header {
+  border-bottom: 1px solid #000;
+
+  .left-col,
+  .right-col {
+    display: flex;
+    align-items: center;
+  }
+
+  .left-col {
+    a.button {
+      display: inline-block;
+
+      i {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    h1 {
+      font-size: 32px;
+      margin-left: 12px;
+    }
+  }
+}

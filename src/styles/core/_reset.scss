@@ -1,0 +1,47 @@
+@import './normalize';
+
+body {
+  textarea {
+    outline: none;
+    border: none;
+    resize: none;
+  }
+
+  p,
+  input,
+  pre {
+    margin: 0;
+  }
+
+  pre {
+    white-space: normal;
+  }
+
+  a {
+    outline: none;
+
+    &,
+    &:focus,
+    &:visited,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  input,
+  button {
+    border: none;
+
+    /* Remove the border highlight on an element */
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+}

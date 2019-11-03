@@ -1,0 +1,4 @@
+@import '../mixins/icon';
+
+/* Demo */
+@include import-icons('', [ 'like', 'like-active', 'dislike', 'dislike-active', 'home' ], 1.6rem);

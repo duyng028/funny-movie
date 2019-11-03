@@ -1,0 +1,40 @@
+@import './prefix';
+
+@mixin transition($value) {
+  @include prefix(transition, $value, ('webkit', 'o'));
+
+  /* Force Hardware Acceleration in WebKit with translate3d */
+  @include transform(translateZ(0));
+}
+
+@mixin transition-delay($value) {
+  @include prefix(transition-delay, $value, ('webkit', 'o'));
+}
+
+@mixin animation($value) {
+  @include prefix(animation, $value, ('webkit'));
+
+  /* Force Hardware Acceleration in WebKit with translate3d */
+  @include transform(translateZ(0));
+}
+
+@mixin transform($value) {
+  @include prefix(transform, $value, ('webkit', 'ms'));
+}
+
+@mixin hyphens($value) {
+  @include prefix(hyphens, $value, ('webkit', 'ms'));
+}
+
+@mixin text-overflow($value) {
+  @include prefix(text-overflow, $value, ('o'));
+}
+
+@mixin text-size-adjust($value) {
+  @include prefix(text-size-adjust, $value, ('webkit', 'ms'));
+}
+
+/* New updated */
+@mixin word-break($value) {
+  @include prefix(word-break, $value);
+}

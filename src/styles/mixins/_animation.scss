@@ -1,0 +1,243 @@
+@import './compatibility';
+
+//@mixin transition($time, $animation-type) {
+//    -webkit-transition: width $time $animation-type;
+//    -moz-transition: width $time $animation-type;
+//    -ms-transition: width $time $animation-type;
+//    -o-transition: width $time $animation-type;
+//    transition: width $time $animation-type;
+//}
+
+/* Effect nhún */
+@mixin swing-effect($start, $end, $duration, $delay-time) {
+  animation: swing $duration $delay-time;
+
+  /* Animation code */
+  @keyframes swing {
+    0% {
+      top: -$start;
+    }
+
+    50% {
+      top: 0;
+    }
+
+    55% {
+      top: $end;
+    }
+
+    95% {
+      top: -$end;
+    }
+
+    100% {
+      top: 0;
+    }
+  }
+}
+
+@keyframes swing-down {
+  0%,
+  100% {
+    @include transform(translateY(0));
+  }
+
+  50% {
+    @include transform(translateY(3rem));
+  }
+}
+
+@keyframes bounce-effect {
+  0% {
+    top: -1rem;
+  }
+
+  40% {
+    top: 0rem;
+  }
+
+  60% {
+    top: -0.2rem;
+  }
+
+  75% {
+    top: 0rem;
+  }
+
+  85% {
+    top: -0.1rem;
+  }
+
+  100% {
+    top: 0rem;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping-light {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0.16;
+  }
+}
+
+@keyframes slide {
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* @keyframes fix-position {
+  0% {
+    opacity: 0;
+  }
+} */
+
+@mixin side-slide($start: 0%, $end: 100%, $duration: 2s, $delay-time: 0s) {
+  animation: side-slide $duration $delay-time;
+
+  @keyframes side-slide {
+    0% {
+      width: $start;
+    }
+
+    100% {
+      width: $end;
+    }
+  }
+}
+
+@mixin circle-carousel(
+  $top: [0%,
+  100%],
+  $left: [0%,
+  100%],
+  $height: [3.7rem,
+  8.8rem],
+  $duration: 2s,
+  $delay-time: 0s
+) {
+  animation: circle-carousel $duration $delay-time;
+
+  @keyframes circle-carousel {
+    @each $top-start, $top-end in $top {
+      0% {
+        top: $top-start;
+      }
+
+      100% {
+        top: $top-end;
+      }
+    }
+
+    @each $left-start, $left-end in $left {
+      0% {
+        left: $left-start;
+      }
+
+      100% {
+        left: $left-end;
+      }
+    }
+
+    @each $height-start, $height-end in $height {
+      0% {
+        height: $height-start;
+      }
+
+      30% {
+        height: $height-end;
+      }
+    }
+
+    /* 0% {
+      top: $top-start;
+      left: $left-start;
+      height: $width-start;
+    }
+
+    30% {
+      height: $width-end;
+    }
+
+    100% {
+      top: $top-end;
+      left: $left-end;
+    } */
+  }
+}
+
+@keyframes scale-menu-item {
+  0% {
+    height: 3.7rem;
+  }
+
+  30% {
+    height: 8.8rem;
+  }
+
+  100% {
+    height: 8.8rem;
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    @include transform(translateY(-20%));
+  }
+
+  to {
+    opacity: 1;
+    @include transform(translateY(0%));
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    @include transform(translateX(-100%));
+  }
+
+  to {
+    @include transform(translateX(0%));
+    visibility: hidden;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    @include transform(translateX(0%));
+    visibility: hidden;
+  }
+
+  to {
+    @include transform(translateX(-100%));
+  }
+}

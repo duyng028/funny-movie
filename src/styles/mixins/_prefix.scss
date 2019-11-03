@@ -1,0 +1,17 @@
+/* Autoprefixer for CSS property */
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+/* Autoprefixer for CSS value */
+@mixin prefix-value($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{$property}: -#{$prefix}-#{$value};
+  }
+
+  #{$property}: $value;
+}

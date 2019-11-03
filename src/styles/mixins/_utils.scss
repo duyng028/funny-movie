@@ -1,0 +1,87 @@
+@import './prefix';
+
+@mixin fit-content($axis: 'x') {
+  @if $axis == x {
+    @include prefix-value(width, fit-content, ('webkit', 'moz'));
+
+    /* Old WebKit support intrinsic and min-intrinsic keywords, but removed in Chrome 48 */
+    width: intrinsic; /* Safari/WebKit uses a non-standard name */
+
+    /* Thuộc tính tương tự */
+    //width: auto;
+  } @else if $axis == y {
+    @include prefix-value(height, fit-content, ('webkit', 'moz'));
+
+    height: intrinsic;
+  }
+}
+
+@mixin max-content($axis) {
+  @if $axis == x {
+    @include prefix-value(width, max-content, ('webkit', 'moz'));
+    //width: intrinsic;  /* Safari/WebKit uses a non-standard name */
+  } @else if $axis == y {
+    @include prefix-value(height, max-content, ('webkit', 'moz'));
+    //height: intrinsic; /* Safari/WebKit uses a non-standard name */
+  }
+}
+
+/* Fake input type password */
+@mixin text-security() {
+  /* Hiện ko còn browser nào hỗ trợ */
+  @include prefix-value(text-security, disc, ('webkit', 'moz'));
+}
+
+/* Prevent background color leak outs */
+@mixin background-bleed() {
+  /* Không cần dùng prefix cũng được */
+  @include prefix-value(background-clip, padding-box, ('webkit', 'moz'));
+}
+
+/* Prevent both scroll chaining and overscroll affordance */
+@mixin scroll-chaining($axis) {
+  @if $axis == x {
+    /* Chrome */
+    overscroll-behavior-x: none;
+
+    /* IE */
+    //-ms-scroll-chaining-x: none;
+
+    /* Firefox/Safari */
+    scroll-boundary-behavior-x: none;
+    scroll-behavior-x: smooth;
+  } @else if $axis == y {
+    /* Chrome */
+    overscroll-behavior-y: none;
+
+    /* IE */
+    //-ms-scroll-chaining-y: none;
+
+    /* Firefox/Safari */
+    scroll-boundary-behavior-y: none;
+    scroll-behavior-y: smooth;
+  }
+}
+
+/* Sticky */
+@mixin sticky($index) {
+  @include prefix-value(position, sticky, ('webkit'));
+  z-index: $index;
+
+  height: 100%;
+
+  @content;
+}
+
+/* Init fixed size */
+@mixin fixed-size($width, $height: null) {
+  min-width: $width;
+  max-width: $width;
+
+  @if $height != null {
+    min-height: $height;
+    max-height: $height;
+  }
+
+  @content;
+}

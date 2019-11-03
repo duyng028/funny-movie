@@ -1,0 +1,34 @@
+/* Object-fit helper dành riêng cho video/image/iframe */
+@mixin media-object-fit {
+  &.obj {
+    &-fill {
+      object-fit: fill;
+    }
+
+    &-contain {
+      object-fit: contain;
+    }
+
+    &-cover {
+      object-fit: cover;
+    }
+
+    &-none {
+      object-fit: none;
+    }
+
+    &-scale-down {
+      object-fit: scale-down;
+    }
+  }
+}
+
+@mixin background($opacity, $color: white) {
+  background-color: $color;
+  background-image: url('/media/image/background/pattern-#{$opacity}.png');
+  background-position: center center;
+  background-repeat: repeat;
+  background-size: 12rem;
+
+  @content;
+}

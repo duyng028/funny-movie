@@ -1,0 +1,15 @@
+@mixin responsive($from, $to: null) {
+  @if $from == null or $from == 0 {
+    @media only screen and (max-width: $to) {
+      @content;
+    }
+  } @else if $to == null or $to == 0 {
+    @media only screen and (min-width: $from) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $from) and (max-width: $to) {
+      @content;
+    }
+  }
+}

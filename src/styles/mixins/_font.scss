@@ -1,0 +1,58 @@
+/* Font import mixin */
+@mixin import-fonts(
+  $root-folder,
+  $font-folder,
+  $font-styles,
+  $font-family: $font-folder
+) {
+  @each $font-style, $font-name in $font-styles {
+    @if $font-style == 900 {
+      /* "Black", "Heavy", "Ultra", "Fat", "Poster", "Ultra Black"  */
+      $font-name: 'Black';
+    } @else if $font-style == 800 {
+      /* "Extra Bold", "Ultra Bold", "Extra Bld", "Ultra Bld" */
+      $font-name: 'Heavy';
+    } @else if $font-style == 700 {
+      /* "Bold", "Bld" */
+      $font-name: 'Bold';
+    } @else if $font-style == 600 {
+      /* "Semi Bold", "Semi Bld", "Demi Bold", "Demi Bld" */
+      $font-name: 'Semibold';
+    } @else if $font-style == 500 {
+      /* "Medium", "Demi" */
+      $font-name: 'Medium';
+    } @else if $font-style == 400 {
+      /* "Normal", "Regular", "Roman", "Standard", "Plain" */
+      $font-name: 'Regular';
+    } @else if $font-style == 300 {
+      /* "Light", "Book" */
+      $font-name: 'Light';
+    } @else if $font-style == 200 {
+      /* "Thin", "Hairline" */
+      $font-name: 'Thin';
+    } @else if $font-style == 100 {
+      /* "Extra Light", "Ultra Light" */
+      $font-name: 'Extralight';
+    }
+
+    @font-face {
+      src: url('#{$root-folder}fonts/#{$font-folder}/#{$font-name}.woff')
+        format('woff');
+      font: {
+        family: $font-family;
+        style: normal;
+        weight: $font-style;
+      }
+    }
+
+    @font-face {
+      src: url('#{$root-folder}fonts/#{$font-folder}/#{$font-name}Italic.woff')
+        format('woff');
+      font: {
+        family: $font-family;
+        style: italic;
+        weight: $font-style;
+      }
+    }
+  }
+}

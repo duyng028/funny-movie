@@ -1,0 +1,6 @@
+@mixin circle-img-size($size) {
+  border-radius: $size;
+  
+  width: $size;
+  height: $size;
+}
