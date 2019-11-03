@@ -1,0 +1,21 @@
+@import '../../styles/variables/color';
+.user-bar {
+  display: flex;
+  align-items: center;
+
+  .greeting {
+    span:first-child {
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+  }
+
+  .button {
+    padding: 1rem 1.4rem;
+    margin-left: 2rem;
+
+    &.secondary-button {
+      border: 1px solid $brown-1;
+    }
+  }
+}

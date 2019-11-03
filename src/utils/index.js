@@ -5,14 +5,12 @@ import createSagaMiddleWare from 'redux-saga';
 import reducers from '../reducers';
 import rootSaga from '../sagas';
 
-export const testStore = () => {
+export const testStore = initialState => {
   const saga = createSagaMiddleWare();
-  let middleWares;
 
   const logger = createLogger();
-  middleWares = applyMiddleware(saga, logger);
-
-  const store = createStore(reducers, composeWithDevTools(middleWares));
+  const createStoreWithMiddleware = applyMiddleware(saga, logger)(createStore);
+  const store = createStoreWithMiddleware(reducers, initialState);
 
   saga.run(rootSaga);
 

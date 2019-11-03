@@ -7,9 +7,10 @@ import '../styles/index.scss';
 export default function(ComposedComponent) {
   class Layout extends Component {
     render() {
+      const { isLoggedIn } = this.props;
       return (
         <div className="container">
-          <Header />
+          <Header isLoggedIn={isLoggedIn} />
           <div className="e-content">
             <ComposedComponent {...this.props} />
           </div>
@@ -18,7 +19,7 @@ export default function(ComposedComponent) {
     }
   }
 
-  const mapStateToProps = state => ({});
+  const mapStateToProps = state => ({ isLoggedIn: state.auth.isLoggedIn });
 
   return withRouter(connect(mapStateToProps)(Layout));
 }

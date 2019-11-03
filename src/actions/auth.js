@@ -1,4 +1,4 @@
-import { LOGIN_REGISTER_REQUEST, LOGIN_REGISTER_REQUEST_SUCCESS, LOGIN_REGISTER_REQUEST_FAILED } from './types';
+import { LOGIN_REGISTER_REQUEST, LOGIN_REGISTER_REQUEST_SUCCESS, LOGIN_REGISTER_REQUEST_FAILED, LOGOUT } from './types';
 
 export const doLoginRegisterRequest = payload => {
   return {
@@ -17,5 +17,11 @@ export const doLoginRegisterRequestSuccess = email => {
 export const doLoginRegisterRequestFailed = () => {
   return {
     type: LOGIN_REGISTER_REQUEST_FAILED
+  };
+};
+
+export const doLogout = () => {
+  return {
+    type: LOGOUT
   };
 };

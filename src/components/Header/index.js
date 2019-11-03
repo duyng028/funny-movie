@@ -1,8 +1,10 @@
 import React from 'react';
 import './styles.scss';
 import LogInForm from '../LoginForm';
+import UserBar from '../UserBar';
 
-const Header = () => {
+const Header = props => {
+  const { isLoggedIn } = props;
   return (
     <div className="e-header">
       <div className="row">
@@ -12,9 +14,7 @@ const Header = () => {
           </a>
           <h1 className="site-name">Funny Movie</h1>
         </div>
-        <div className="col-sm-8 right-col">
-          <LogInForm />
-        </div>
+        <div className="col-sm-8 right-col">{isLoggedIn ? <UserBar /> : <LogInForm />}</div>
       </div>
     </div>
   );
