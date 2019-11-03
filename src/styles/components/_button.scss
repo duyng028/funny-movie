@@ -1,0 +1,7 @@
+.button {
+  padding: 0 1.4rem;
+  &.primary-button {
+    background-color: $brown-1;
+    color: $white;
+  }
+}

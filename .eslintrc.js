@@ -5,7 +5,8 @@ module.exports = {
   env: {
     es6: true,
     node: true,
-    browser: true
+    browser: true,
+    jest: true
   },
   parserOptions: {
     ecmaVersion: 2017,
@@ -70,6 +71,7 @@ module.exports = {
     'operator-linebreak': 0,
     'jsx-a11y/no-interactive-element-to-noninteractive-role': 0,
     'no-param-reassign': 0,
-    'react/no-danger': 0
+    'react/no-danger': 0,
+    'react/jsx-props-no-spreading': 0
   }
 };
