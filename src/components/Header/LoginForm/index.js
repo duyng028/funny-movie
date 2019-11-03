@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doLoginRegisterRequest } from '../../actions';
+import { doLoginRegisterRequest } from '../../../actions';
 import './styles.scss';
 
 class LoginForm extends Component {

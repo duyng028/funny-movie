@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
-import LogInForm from '../LoginForm';
-import UserBar from '../UserBar';
+import LogInForm from './LoginForm';
+import UserBar from './UserBar';
 
 const Header = props => {
   const { isLoggedIn } = props;

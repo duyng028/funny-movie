@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doLogout } from '../../actions';
+import { doLogout } from '../../../actions';
 import './styles.scss';
 
 class UserBar extends Component {

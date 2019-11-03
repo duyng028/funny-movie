@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { testStore } from '../../utils';
+import { testStore } from '../../../utils';
 import UserBar from './index';
 
 const setup = (props = {}) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import LoginForm from './index';
-import { testStore } from '../../utils';
+import { testStore } from '../../../utils';
 
 const setup = (props = {}) => {
   const store = testStore();
