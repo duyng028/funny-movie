@@ -4,3 +4,7 @@ import { API_URL } from '../constants/serverConfig';
 export const loginRegisterApi = payload => {
   return _request.POST(`${API_URL}/api/auth`, payload);
 };
+
+export const voteMovieApi = payload => {
+  return _request.POST(`${API_URL}/api/vote`, payload);
+};

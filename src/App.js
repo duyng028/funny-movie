@@ -5,8 +5,27 @@ import { Switch, Route, Redirect } from 'react-router';
 import { PersistGate } from 'redux-persist/integration/react';
 import configStore from './store';
 import { HomePage, ShareMoviePage, NotFoundPage } from './containers';
+import createPage from './containers/createPage';
 
 const { store, persistor } = configStore();
+const routeConfig = [
+  {
+    path: '/',
+    exact: true,
+    component: HomePage
+  },
+  { path: '/share', exact: true, component: ShareMoviePage },
+  { path: '/404', exact: true, component: NotFoundPage }
+];
+
+const _generateRoutes = () => {
+  const routes = routeConfig.map(({ path, exact, component }, index) => {
+    const ComponentWithLayout = createPage(component);
+    return <Route path={path} exact={exact} component={ComponentWithLayout} key={`route-${index + 1}`} />;
+  });
+
+  return routes;
+};
 
 const App = () => {
   return (
@@ -14,15 +33,7 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <BrowserRouter>
           <Switch>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
-            <Route path="/share" exact>
-              <ShareMoviePage />
-            </Route>
-            <Route path="/404" exact>
-              <NotFoundPage />
-            </Route>
+            {_generateRoutes()}
             <Route path="*">
               <Redirect to="/404" />
             </Route>

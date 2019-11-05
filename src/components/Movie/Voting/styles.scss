@@ -1,0 +1,19 @@
+.voting-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  .button {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 2.4rem;
+    }
+
+    .icon {
+      width: 4.8rem;
+      height: 4.8rem;
+    }
+  }
+}
