@@ -1,13 +1,13 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { LOGIN_REGISTER_REQUEST, VOTE_MOVIE_REQUEST } from '../actions/types';
 import { doLoginRegisterRequestSuccess, doLoginRegisterRequestFailed, voteMovieSuccess, voteMovieFailed } from '../actions';
-import { loginRegisterApi, voteMovieApi } from '../services';
+import { loginRegisterApi, voteMovieApi, withoutAPIServer } from '../services';
 
 function* loginRegisterSaga(action) {
   try {
     const { payload } = action;
     const response = yield call(loginRegisterApi, payload);
-    if (!response.code) {
+    if (!response.code || withoutAPIServer) {
       yield put(doLoginRegisterRequestSuccess(payload.email));
     } else {
       yield put(doLoginRegisterRequestFailed());
@@ -21,7 +21,8 @@ function* voteMovieSaga(action) {
   try {
     const { payload } = action;
     const response = yield call(voteMovieApi, payload);
-    if (!response.code) {
+
+    if (!response.code || withoutAPIServer) {
       yield put(voteMovieSuccess(payload.email));
     } else {
       yield put(voteMovieFailed());
