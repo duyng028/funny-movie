@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { SHARE_MOVIE, SHARE_MOVIE_SUCCESS } from '../actions/types';
-import { youtubeMovieApi, shareMovieApi, withoutAPIServer } from '../services';
-import { addMoviesAction, shareMovieFailed } from '../actions';
+import { SHARE_MOVIE, SHARE_MOVIE_SUCCESS, VOTE_MOVIE_REQUEST } from '../actions/types';
+import { youtubeMovieApi, shareMovieApi, withoutAPIServer, voteMovieApi } from '../services';
+import { addMoviesAction, shareMovieFailed, voteMovieSuccess, voteMovieFailed } from '../actions';
 
 function* shareMovieSaga(action) {
   try {
@@ -27,8 +27,24 @@ function* shareMovieSaga(action) {
   }
 }
 
+function* voteMovieSaga(action) {
+  try {
+    const { payload } = action;
+    const response = yield call(voteMovieApi, payload);
+
+    if (!response.code || withoutAPIServer) {
+      yield put(voteMovieSuccess(payload));
+    } else {
+      yield put(voteMovieFailed());
+    }
+  } catch (error) {
+    console.log('Has an error with "voteMovieSaga".', error);
+  }
+}
+
 function* watchMovieSaga() {
   yield takeLatest(SHARE_MOVIE, shareMovieSaga);
+  yield takeLatest(VOTE_MOVIE_REQUEST, voteMovieSaga);
 }
 
 export default [watchMovieSaga];
