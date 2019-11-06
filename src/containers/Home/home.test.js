@@ -13,7 +13,7 @@ const setup = (storeState = {}) => {
 
 describe('HomePage Component', () => {
   it('Should render without errors', () => {
-    const component = setup({ movies: [] });
+    const component = setup({ movies: { list: [] } });
     const wrapper = component.find('.page-wrapper');
     expect(wrapper.length).toBe(1);
   });

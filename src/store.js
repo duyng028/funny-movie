@@ -8,11 +8,11 @@ import { createBlacklistFilter } from 'redux-persist-transform-filter';
 import reducers from './reducers';
 import rootSaga from './sagas';
 
-export const blacklistFilters = createBlacklistFilter('auth', ['message', 'showAuthPopup', 'currentForm', 'popupData']);
+export const blacklistFilters = createBlacklistFilter('auth', ['message']);
 export const persistConfig = {
   key: 'root',
   storage: storageSession,
-  whitelist: ['auth', 'constants', 'firstToken'],
+  whitelist: ['auth', 'movies'],
   transforms: [blacklistFilters]
 };
 

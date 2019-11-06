@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import createPage from '../createPage';
 import { Movie } from '../../components';
 import './styles.scss';
 
@@ -17,6 +16,6 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ movies: [...state.movies] });
+const mapStateToProps = state => ({ movies: [...state.movies.list] });
 
 export default connect(mapStateToProps)(HomePage);

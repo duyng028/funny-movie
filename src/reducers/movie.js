@@ -1,4 +1,4 @@
-import { ADD_MOVIVES } from '../actions/types';
+import { ADD_MOVIVES, SHARE_MOVIE_FAILED, SHARE_MOVIE, RESET_SHARING_STATUS } from '../actions/types';
 
 const _exampleMovie = {
   videoID: 'ua3fq-yw6cY',
@@ -8,14 +8,26 @@ const _exampleMovie = {
   author: 'test@gmail.com',
   votingStatus: { like: 10, dislike: 100 }
 };
-const initialState = [_exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie];
+const initialState = {
+  list: [_exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie],
+  sharingStatus: undefined
+};
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case ADD_MOVIVES:
-      return [...payload, ...state];
+      return { ...state, list: [...payload.movies, ...state.list], sharingStatus: payload.sharingStatus };
+
+    case SHARE_MOVIE:
+      return { ...state, sharingStatus: SHARE_MOVIE };
+
+    case SHARE_MOVIE_FAILED:
+      return { ...state, sharingStatus: SHARE_MOVIE_FAILED };
+
+    case RESET_SHARING_STATUS:
+      return { ...state, sharingStatus: undefined };
 
     default:
       return state;
