@@ -9,7 +9,7 @@ const _exampleMovie = {
   votingStatus: { like: 10, dislike: 100 }
 };
 const initialState = {
-  list: [_exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie, _exampleMovie],
+  list: [_exampleMovie],
   sharingStatus: undefined
 };
 
