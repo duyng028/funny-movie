@@ -7,13 +7,13 @@ const setup = (props = {}) => {
   return component;
 };
 
-describe('Loader Component', () => {
-  let loader;
+describe('ShareMoviePage Component', () => {
+  let page;
   beforeEach(() => {
-    loader = setup();
+    page = setup();
   });
   it('Should render without errors', () => {
-    const wrapper = loader.find('.sharing-movie-page');
+    const wrapper = page.find('.sharing-movie-page');
     expect(wrapper.length).toBe(1);
   });
 });
