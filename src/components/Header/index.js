@@ -11,8 +11,8 @@ const Header = props => {
         <div className="col-sm-4 left-col">
           <a className="button logo" href="/">
             <i className="icon home-icon" />
+            <h1 className="site-name">Funny Movie</h1>
           </a>
-          <h1 className="site-name">Funny Movie</h1>
         </div>
         <div className="col-sm-8 right-col">{isLoggedIn ? <UserBar /> : <LogInForm />}</div>
       </div>
