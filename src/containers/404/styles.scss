@@ -1,0 +1,16 @@
+.not-found-page {
+  margin-top: 25vh;
+  display: flex;
+  justify-content: center;
+
+  .number-404 {
+    font-weight: 900;
+    font-size: 12rem;
+    color: #a4a4a4;
+  }
+
+  .text-error {
+    font-size: 3.2rem;
+    font-weight: 600;
+  }
+}
