@@ -1,5 +1,9 @@
 .login-form {
   form {
     display: flex;
+
+    button:disabled {
+      background-color: #999999;
+    }
   }
 }
